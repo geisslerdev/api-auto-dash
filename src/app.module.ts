@@ -7,6 +7,7 @@ import { User } from './entities/user.entity';
 import { Merchant } from './entities/merchant.entity';
 import { Subscription } from 'rxjs';
 import { UsersModule } from './users/users.module';
+import { IfoodController } from './controllers/ifood.controller';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     UsersModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, IfoodController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
