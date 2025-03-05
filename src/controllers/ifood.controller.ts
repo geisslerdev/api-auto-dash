@@ -24,3 +24,12 @@ export class IfoodController {
     }
   }
 }
+
+// delim@Alexandre_PC MINGW64 /d/Projetos/api-auto-dash (main)
+// $ git remote -v
+// upstream        https://github.com/geisslerdev/api-auto-dash.git (fetch)
+// upstream        https://github.com/geisslerdev/api-auto-dash.git (push)
+
+// delim@Alexandre_PC MINGW64 /d/Projetos/api-auto-dash (main)
+// git remote add upstream https://github.com/geisslerdev/api-auto-dash.git
+// git remote add upstream https://github.com/Alexandre-Konrath/api-auto-dash.git
