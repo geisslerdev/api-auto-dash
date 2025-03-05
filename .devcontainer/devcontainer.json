@@ -1,0 +1,9 @@
+{
+  "name": "Backend Codespace",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "api",
+  "workspaceFolder": "/app",
+  "postCreateCommand": "npm install",
+  "forwardPorts": [3000, 6379],
+  "extensions": ["ms-vscode.vscode-typescript-next", "dbaeumer.vscode-eslint"]
+}
