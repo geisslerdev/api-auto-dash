@@ -20,7 +20,7 @@ export class IfoodController {
       return response.data;
     } catch (error) {
       console.error('Erro ao buscar dados da API do iFood', error);
-      throw error;  // Lança erro se falhar
+      throw error;
     }
   }
 }
