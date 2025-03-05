@@ -1,0 +1,24 @@
+import { Controller, Get } from '@nestjs/common';
+const axios = require('axios');
+
+@Controller('order')
+export class OrderController {
+  private readonly accessToken = 'eyJraWQiOiJlZGI4NWY2Mi00ZWY5LTExZTktODY0Ny1kNjYzYmQ4NzNkOTMiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJzdWIiOiI4MDlhYWUwNS03N2ZkLTQ3MjUtYjIyZC02Y2I0MDAwZWRjY2YiLCJvd25lcl9uYW1lIjoiODA5YWFlMDUtNzdmZC00NzI1LWIyMmQtNmNiNDAwMGVkY2NmIiwiaXNzIjoiaUZvb2QiLCJjbGllbnRfaWQiOiI4MDlhYWUwNS03N2ZkLTQ3MjUtYjIyZC02Y2I0MDAwZWRjY2YiLCJhdWQiOlsiaXRlbSIsImZpbmFuY2lhbCIsImNhdGFsb2ciLCJtZXJjaGFudCIsImxvZ2lzdGljcyIsInBpY2tpbmciLCJvYXV0aC1zZXJ2ZXIiLCJzaGlwcGluZyIsInJldmlldyIsImdyb2NlcmllcyIsImV2ZW50cyIsInByb21vdGlvbiIsIm9yZGVyIl0sImFwcF9uYW1lIjoiODA5YWFlMDUtNzdmZC00NzI1LWIyMmQtNmNiNDAwMGVkY2NmIiwic2NvcGUiOlsiaXRlbSIsInNoaXBwaW5nIiwiY2F0YWxvZyIsInJldmlldyIsIm1lcmNoYW50IiwibG9naXN0aWNzIiwicGlja2luZyIsImdyb2NlcmllcyIsImV2ZW50cyIsInByb21vdGlvbiIsImNvbmNpbGlhdG9yIiwib3JkZXIiXSwidHZlciI6InYyIiwibWVyY2hhbnRfc2NvcGUiOlsiNzNhZmRmMGUtNDg1ZS00MjAwLWJkM2MtM2QyOTNmMjljYWU3OnBpY2tpbmciLCI3M2FmZGYwZS00ODVlLTQyMDAtYmQzYy0zZDI5M2YyOWNhZTc6cHJvbW90aW9uIiwiNzNhZmRmMGUtNDg1ZS00MjAwLWJkM2MtM2QyOTNmMjljYWU3Om1lcmNoYW50IiwiNzNhZmRmMGUtNDg1ZS00MjAwLWJkM2MtM2QyOTNmMjljYWU3Omdyb2NlcmllcyIsIjczYWZkZjBlLTQ4NWUtNDIwMC1iZDNjLTNkMjkzZjI5Y2FlNzpjb25jaWxpYXRvciIsIjczYWZkZjBlLTQ4NWUtNDIwMC1iZDNjLTNkMjkzZjI5Y2FlNzpzaGlwcGluZyIsIjczYWZkZjBlLTQ4NWUtNDIwMC1iZDNjLTNkMjkzZjI5Y2FlNzpjYXRhbG9nIiwiNzNhZmRmMGUtNDg1ZS00MjAwLWJkM2MtM2QyOTNmMjljYWU3OmxvZ2lzdGljcyIsIjczYWZkZjBlLTQ4NWUtNDIwMC1iZDNjLTNkMjkzZjI5Y2FlNzppdGVtIiwiNzNhZmRmMGUtNDg1ZS00MjAwLWJkM2MtM2QyOTNmMjljYWU3Om9yZGVyIiwiNzNhZmRmMGUtNDg1ZS00MjAwLWJkM2MtM2QyOTNmMjljYWU3OnJldmlldyIsIjczYWZkZjBlLTQ4NWUtNDIwMC1iZDNjLTNkMjkzZjI5Y2FlNzpldmVudHMiXSwiZXhwIjoxNzQxMjM3NTM1LCJpYXQiOjE3NDEyMTU5MzUsImp0aSI6IjgwOWFhZTA1LTc3ZmQtNDcyNS1iMjJkLTZjYjQwMDBlZGNjZiIsIm1lcmNoYW50X3Njb3BlZCI6dHJ1ZX0.b8SC4EWoPY-E6zl_Att9PMeniuaUY0mAQjh4_kInQ0APsgd-NRdYUOGgbzMmjZsVohQWBGrE6AwKzN0PF-IhAsp1UmG4UpZ7Z6cFCtRJu9mLYmKXr0vQ-AFvlnpBdbuqMzcZ22v_2oGb6i-WgVlrfQUNrOnPv55WhFjlHAW-kiw';
+
+  private readonly OrderId = '28df4b7a-2021-43dd-b270-3eaca822cf22'
+
+  @Get()
+  async getDataFromIfood() {
+    try {
+      const response = await axios.get(`https://merchant-api.ifood.com.br/order/v1.0/orders/${this.OrderId}`, {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao buscar dados de Pedidos da api do ifood', error);
+      throw error;
+    }
+  }
+}
