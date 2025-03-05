@@ -16,7 +16,7 @@ export class IfoodController {
           Authorization: `Bearer ${this.accessToken}`,
         },
       });
-      console.log('---------- DDD', response.data);
+      console.log('----------', response.data);
       return response.data;
     } catch (error) {
       console.error('Erro ao buscar dados da API do iFood', error);
