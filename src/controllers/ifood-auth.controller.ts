@@ -2,7 +2,7 @@ import { Controller, Post, Body, Get } from '@nestjs/common';
 import { IfoodAuthService } from 'src/services/ifood-auth.service';
 
 @Controller('auth')
-export class AuthController {
+export class IfoodAuthController {
   constructor(private readonly ifoodAuthService: IfoodAuthService) {}
 
   @Post('generate-code')

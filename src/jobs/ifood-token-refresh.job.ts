@@ -3,7 +3,7 @@ import { Cron } from '@nestjs/schedule';
 import { IfoodAuthService } from 'src/services/ifood-auth.service';
 
 @Injectable()
-export class TokenRenewalJob {
+export class IfoodTokenRenewalJob {
   constructor(private readonly ifoodAuthService: IfoodAuthService) {}
 
   @Cron('*/10 * * * *') // Executa a cada 10 minutos

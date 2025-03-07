@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { IfoodAuthService } from 'src/services/ifood-auth.service';
 
 @Injectable()
-export class AuthMiddleware implements NestMiddleware {
+export class IfoodAuthMiddleware implements NestMiddleware {
   constructor(private readonly ifoodAuthService: IfoodAuthService) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
