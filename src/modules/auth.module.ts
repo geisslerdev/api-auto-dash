@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthService } from './auth.service';
-import { AuthController } from './auth.controller';
 import { User } from '../entities/user.entity';
+import { AuthService } from 'src/services/auth.service';
+import { AuthController } from 'src/controllers/auth.controller';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { User } from '../entities/user.entity';
       secret: 'supersecreto', // 🔹 Trocar por variável de ambiente em produção
       signOptions: { expiresIn: '1h' },
     }),
+    HttpModule,
   ],
   providers: [AuthService],
   controllers: [AuthController],
