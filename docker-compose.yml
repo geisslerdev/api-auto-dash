@@ -1,12 +1,6 @@
-version: '3.8'
-services:
-  redis:
-    image: redis:latest
-    container_name: redis_cache
-    restart: always
-    ports:
-      - "6379:6379"
+version: "3.8"
 
+services:
   api:
     build: .
     container_name: minha_api
@@ -15,11 +9,29 @@ services:
       - "3000:3000"
     depends_on:
       - redis
-    environment:
-      DATABASE_URL: "postgresql://dbadmin:dbPassword1108@database-1.cf64eqcyyvd7.us-east-2.rds.amazonaws.com:5432/mydatabase"
-      REDIS_HOST: "redis"
-      REDIS_PORT: "6379"
+    env_file:
+      - .env
 
-networks:
-  default:
-    driver: bridge
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  banco:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: meu_usuario
+      POSTGRES_PASSWORD: minha_senha
+      POSTGRES_DB: meu_banco
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+

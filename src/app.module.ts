@@ -12,6 +12,9 @@ import { IfoodAuthController } from './controllers/ifood-auth.controller';
 import { IfoodTokenRenewalJob } from './jobs/ifood-token-refresh.job';
 import { IfoodAuthModule } from './modules/ifood-auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MerchantModule } from './modules/merchants.module';
+import { DataModule } from './modules/data.module';
+import { SubscriptionModule } from './modules/subscriptions.module';
 
 @Module({
   imports: [
@@ -32,6 +35,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     AuthModule,
     UsersModule,
     IfoodAuthModule,
+    MerchantModule,
+    DataModule,
+    SubscriptionModule,
     ScheduleModule.forRoot(),
     ConfigModule.forRoot({ isGlobal: true }),
   ],
