@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Merchant } from './merchant.entity';
 import { Subscription } from './subscription.entity';
+import { IfoodData } from './ifood-data.entity';
 
 @Entity('users')
 export class User {
@@ -21,6 +22,9 @@ export class User {
 
   @Column()
   password_hash: string;
+
+  @OneToMany(() => IfoodData, (ifoodData) => ifoodData.user)
+  ifoodData: IfoodData[];
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;

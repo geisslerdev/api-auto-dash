@@ -4,8 +4,10 @@ import {
   Column,
   CreateDateColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { User } from './user.entity';
+import { IfoodData } from './ifood-data.entity';
 
 @Entity('merchants')
 export class Merchant {
@@ -20,6 +22,9 @@ export class Merchant {
 
   @Column({ length: 50, unique: true })
   ifood_id: string;
+
+  @OneToMany(() => IfoodData, (ifoodData) => ifoodData.merchant)
+  ifoodData: IfoodData[];
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;
